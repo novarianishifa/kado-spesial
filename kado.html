@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kado Ulang Tahun dengan Musik</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-100 flex flex-col items-center justify-center min-h-screen p-6">
+
+    <!-- Tombol Back -->
+  <div class="self-start mb-6">
+    <button onclick="history.back()" 
+      class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 font-semibold">
+      <!-- Icon Panah Kiri -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
+           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" 
+              d="M15 19l-7-7 7-7" />
+      </svg>
+      <span>Kembali</span>
+    </button>
+  </div>
+
+  <div class="bg-white p-10 rounded-3xl shadow-xl max-w-lg text-center space-y-6">
+    <h1 class="text-4xl font-bold text-pink-600">Selamat Ulang Tahun 🎉</h1>
+    <p class="text-gray-700 text-lg">
+      Maaf belum bisa ngasih yang lebih tpi ini bisa jadi kado
+      spesial dari adik mu, ini maaf juga jika adikmu ini selalu merepotkan.
+      Dan belum bisa mandiri tapi di mata ipa kakak adalah kakak terbaik 
+      You are my best sister thank you❣️
+    </p>
+
+    <!-- Tombol Play & Stop -->
+    <div class="space-x-4">
+      <button id="playBtn" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full font-semibold transition">
+        Putar Lagu Ulang Tahun 🎶
+      </button>
+      <br>
+      <br>
+      <button id="stopBtn" class="bg-gray-400 hover:bg-gray-500 text-white px-6 py-3 rounded-full font-semibold transition" disabled>
+        Stop Lagu ⏹️
+      </button>
+    </div>
+  </div>
+
+  <audio id="birthdayAudio" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg" />
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <script>
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const audio = document.getElementById('birthdayAudio');
+
+    playBtn.addEventListener('click', () => {
+      audio.play();
+      playBtn.disabled = true;
+      stopBtn.disabled = false;
+      playBtn.textContent = "🎵 Lagu Sedang Diputar...";
+    });
+
+    stopBtn.addEventListener('click', () => {
+      audio.pause();
+      audio.currentTime = 0;
+      playBtn.disabled = false;
+      stopBtn.disabled = true;
+      playBtn.textContent = "Putar Lagu Ulang Tahun 🎶";
+    });
+  </script>
+
+</body>
+</html>
